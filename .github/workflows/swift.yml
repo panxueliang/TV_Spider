@@ -1,0 +1,22 @@
+# 此工作流程将构建一个 Swift 项目
+# 有关更多信息，请参阅：https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
+
+名称：斯威夫特
+
+于：
+  推：
+    分支：[  “主要”  ]
+  拉请求：
+    分支：[  “主要”  ]
+
+职位：
+  构建：
+
+    运行： macos-latest
+
+    步骤：
+    -使用： actions/checkout@v3
+    -名称：构建
+      运行： swift build -v
+    -名称：运行测试
+      运行：快速测试-v
