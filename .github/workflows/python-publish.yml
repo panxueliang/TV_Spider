@@ -1,0 +1,39 @@
+# 创建版本时，此工作流程将使用 Twine 上传 Python 包
+# 有关更多信息，请参阅：https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
+
+# 此工作流程使用未经 GitHub 认证的操作。
+# 它们由第三方提供并受
+# 单独的服务条款、隐私政策和支持
+# 文档。
+
+名称：上传Python包
+
+于：
+  发布：
+    类型：[已发表]
+
+权限：
+  内容：阅读
+
+职位：
+  部署：
+
+    运行： ubuntu-latest
+
+    步骤：
+    -使用： actions/checkout@v3
+    -名称：设置Python
+      使用： actions/setup-python@v3
+      与：
+        python-版本：'3.x'
+    -名称：安装依赖项
+      运行：|
+        python -m pip install --升级 pip
+        pip 安装构建
+    -名称：构建包
+      运行： python -m 构建
+    -名称：发布包
+      使用： pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+      与：
+        用户： __token__
+        密码： $ { { secrets.PYPI_API_TOKEN } }
